@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+.ant-layout-header{
+  height: 48px;
+}
+
+.ant-layout-footer{
+  background: none;
+}
+
+.ant-btn {
+  border-radius: 0px;
+}
+
+
+body {
+  background-color: #ECECEC;
+}
+
+.ant-menu {
+  background: #1890ff;
+
+}
+
+.ant-layout-header {
+  background: #1890ff;
+
+}

@@ -1,0 +1,60 @@
+
+<form nz-form [formGroup]="validateForm" class="login-form" >
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-info">
+        <nz-select formControlName="product" style="width: 350px;" nzShowSearch nzAllowClear nzPlaceHolder="Payment Product:" [(ngModel)]="payment.product">
+          <nz-option nzLabel="sepa-credit-transfers" nzValue="sepa-credit-transfers"></nz-option>
+          <nz-option  nzLabel="cross-border-credit-transfers" nzValue="cross-border-credit-transfers"></nz-option>
+        </nz-select>
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('product').dirty && validateForm.get('product').errors">Please input Payment Product!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-info">
+        <nz-input-group nzPrefixIcon="anticon anticon-info">
+          <nz-select formControlName="debtorIban" style="width: 350px;" nzShowSearch nzAllowClear nzPlaceHolder="Debtor Iban:" [(ngModel)]="payment.debtorIban">
+            <nz-option nzLabel="DE5198927387393939933" nzValue="DE5198927387393939933"></nz-option>
+            <nz-option  nzLabel="DE519892738738389355" nzValue="DE519892738738389355"></nz-option>
+          </nz-select>
+        </nz-input-group>
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('debtorIban').dirty && validateForm.get('debtorIban').errors">Please input Debtor Iban!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-info">
+        <nz-select formControlName="creditorIban" style="width: 350px;" nzShowSearch nzAllowClear nzPlaceHolder="Creditor Iban:" [(ngModel)]="payment.creditorIban">
+          <nz-option nzLabel="DE6738939939393993939" nzValue="DE6738939939393993939"></nz-option>
+          <nz-option  nzLabel="DE998383766646372788" nzValue="DE998383766646372788"></nz-option>
+        </nz-select>
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('creditorIban').dirty && validateForm.get('creditorIban').errors">Please input Creditor Iban!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-info">
+        <input [(ngModel)]="payment.creditorName" type="text" nz-input formControlName="creditorName" placeholder="Creditor Name:">
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('creditorName').dirty && validateForm.get('creditorName').errors">Please input creditor Name!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-input-group nzPrefixIcon="anticon anticon-pay-circle-o" nzAddOnAfter="EUR">
+        <input style="width: 298px;"  min="1" [(ngModel)]="payment.amount" type="number" nz-input formControlName="amount" placeholder="Amount:">
+      </nz-input-group>
+      <nz-form-explain *ngIf="validateForm.get('amount').dirty && validateForm.get('amount').errors">Please input amount!</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button [nzLoading]="isLoading" (click)="submitForm()"  [disabled]=" validateForm.get('amount').errors || validateForm.get('creditorIban').errors|| validateForm.get('debtorIban').errors|| validateForm.get('product').errors " class="login-form-button" [nzType]="'primary'"><i class="anticon anticon-poweroff"></i>Proceed</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
